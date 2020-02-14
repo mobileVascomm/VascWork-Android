@@ -1,0 +1,2 @@
+include ':app', ':vascwork'
+rootProject.name='VascWork-Android'
