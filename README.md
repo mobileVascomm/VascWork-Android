@@ -158,7 +158,12 @@ class SampleValidation :AppCompatActivity(),ValidationInterface  {
             mutableListOf(ConfrimationRule("Confrimasi password tidk sama",field3)))
   
   ```
-   3. Proses Validation 
+   3. Remove field from validation. User key from register filed for remove
    ````kotlin
-      validation.validation()
+   validation.removeField("username")
+
+   ````
+   4. Proses Validation 
+   ````kotlin
+   validation.validation()
    ````
