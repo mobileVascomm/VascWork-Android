@@ -1,10 +1,10 @@
 # VascWork-Android
 Clean code architecture and utils for easy development android application
   1. Module Arcitecture
-  2. Recyclerview Adapter
+  2. Recyclerview Adapter and Pagination
   3. Extension
   4. Validation Form
-  
+    
 ## Usage 
 Add a dependency to your `build.gradle`:
 ```
@@ -91,7 +91,12 @@ class ModuleSample constructor(iView:ViewStateInterface,context: Context):Module
 
 ```
 
-## Recyclerview Adapter
+5. Function addLifecyclerObserver use as module indicator to stop proses when activity or fragment get destroyed
+``` kotlin
+    sampleModule.addLifecyclerObserver(this.lifecycle)
+```
+
+## Recyclerview Adapter 
 1. Create data class
 ```kotlin
 data class User(val id:String,val nama:String)
@@ -113,7 +118,32 @@ list_login.adapter  = object :RecyclerviewAdapter<User,UserViewHolder>(R.layout.
         }
 ```
 
+## Recyclerview Adapter 
+
+1. Recyclerview pagination use to triger module action 
+```kotlin
+ lazyLoad.setPagination(list_sample,10){ sampleModule.sample3() }
+```
+
+2. When module done request data ,re enable page pagination
+```kotlin
+    // re enable page pagination action
+   lazyLoad.isLoad(true)
+ ```
+```kotlin
+override fun onSuccess(result: Result) {
+        when(result.tag){
+            ModuleSample.TAG_SAMPLE1 -> (result.data as ArrayList<*>).map { data.add(it as String) }
+                .also { list_sample.adapter?.notifyDataSetChanged();lazyLoad.isLoad(true) }
+            ModuleSample.TAG_SAMPLE3 -> (result.data as ArrayList<*>).map{data.add(it as String)}.
+                also { list_sample.adapter?.notifyDataSetChanged();lazyLoad.isLoad(true) }
+        }
+    }
+
+```
+
 ## Extension
+ 
   1. Extension EditText
 ```kotlin
 /*  Auto format currency Rupiah. Example : 1.000.000 */
