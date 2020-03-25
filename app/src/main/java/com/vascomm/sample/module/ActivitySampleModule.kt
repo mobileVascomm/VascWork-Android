@@ -11,7 +11,7 @@ import com.vascomm.vascwork.architecture.core.Result
 import com.vascomm.vascwork.architecture.core.ViewStateInterface
 import kotlinx.android.synthetic.main.activity_sample_module.*
 
-class ActivitySampleModule:AppCompatActivity(),ViewStateInterface {
+    class ActivitySampleModule:AppCompatActivity(),ViewStateInterface {
     private val sampleModule by lazy { ModuleSample(this,applicationContext) }
     private val lazyLoad by lazy { RecyclerViewPagination() }
     private val data = ArrayList<String>()
@@ -19,6 +19,8 @@ class ActivitySampleModule:AppCompatActivity(),ViewStateInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sample_module)
+
+        sampleModule.addLifecyclerObserver(this.lifecycle)
         setSample()
     }
 
@@ -44,7 +46,7 @@ class ActivitySampleModule:AppCompatActivity(),ViewStateInterface {
         }
     }
 
-    override fun onFailure(result: Result) {
+    override fun onFailure(result: Result) {    
         Toast.makeText(this,result.message,Toast.LENGTH_SHORT).show()
     }
 

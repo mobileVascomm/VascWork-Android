@@ -102,5 +102,7 @@ class Validation  constructor(var iValidation: ValidationInterface){
                 is ValidationType2 -> validateType2(validation)
             }
         }
+
+        finisValidate()
     }
 }

@@ -35,7 +35,7 @@ fun String.convertToNoninal() :String{
 /*
     convert string ke base64
  */
-fun String.toBase64():String{
+    fun String.toBase64():String{
     val data = this.toByteArray(Charsets.UTF_8)
     val base = Base64.encode(data,Base64.NO_WRAP)
     return String(base)

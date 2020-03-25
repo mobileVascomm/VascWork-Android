@@ -29,8 +29,19 @@ class ModuleSample constructor(iView:ViewStateInterface,context: Context):Module
     }
 
     override fun sample1() {
+        event("test"){
+            it.success(message = "adfaf")
+            it.loading(isLoading = true)
+        }
         event(TAG_SAMPLE1){
+            // success state
             it.success("00","sample data berhasil",dummy)
+
+            //failure state
+            it.failure("99","sample data gagal","")
+
+            // loading state
+            it.loading("88","Loading",true)
         }
     }
 

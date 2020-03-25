@@ -21,13 +21,18 @@ class ValidationActivity :AppCompatActivity(),ValidationInterface {
 
     private fun setSample(){
        // validation.
-        validation.registerField(field1,input1,"username", mutableListOf(RequireRule("Field tidak boleh kosong")))
-        validation.registerField(field2,input2,"email", mutableListOf(EmailRule("Email tidak valid")))
-        validation.registerField(field3,input3,"password", mutableListOf(
-            RegexRule("Format password tidak valid ","(?=.*[0-9])(?=.*[a-z]).{8,}"),
+        validation.registerField(field1,input1,"username",
+            mutableListOf(RequireRule("Field tidak boleh kosong"),LenghtRule("test",10,12)))
+        validation.registerField(field2,input2,"email",
+            mutableListOf(EmailRule("Email tidak valid")))
+        validation.registerField(field3,input3,"password",
+            mutableListOf( RegexRule("Format password tidak valid ","(?=.*[0-9])(?=.*[a-z]).{8,}"),
             LenghtRule("Minimal length 10 digit dan maksimal 12",10,12)))
-        validation.registerField(field4,input4,"confirm", mutableListOf(ConfrimationRule("Confrimasi password tidk sama",field3)))
+        validation.registerField(field4,input4,"confirm",
+            mutableListOf(ConfrimationRule("Confrimasi password tidk sama",field3)))
 
+
+        validation.removeField("username")
 
         btn_submit.setOnClickListener { validation.validation() }
         btn_add.setOnClickListener { }
