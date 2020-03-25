@@ -4,4 +4,35 @@
         <item name="android:textColor">@android:color/holo_red_dark</item>
         <item name="android:textSize">12sp</item>
     </style>
+
+    <style name="TextTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/medium</item>
+        <item name="android:layout_marginBottom">@dimen/small</item>
+        <item name="android:textSize">@dimen/text_title</item>
+        <item name="android:textColor">@android:color/primary_text_light</item>
+    </style>
+
+    <style name="TextTitle.Center">
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="TextSubtitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_subtitle</item>
+    </style>
+
+    <style name="TextContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/medium</item>
+        <item name="android:textSize">@dimen/font_medium</item>
+        <item name="android:textColor">@android:color/secondary_text_light_nodisable</item>
+    </style>
+    <style name="TextContent.Center">
+        <item name="android:gravity">center</item>
+    </style>
 </resources>
