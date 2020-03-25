@@ -2,7 +2,6 @@ package com.vascomm.vascwork.extension
 
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.widget.EditText
 
 /*
@@ -16,7 +15,7 @@ fun EditText?.setCurrencyFormat(){
         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             this@setCurrencyFormat.removeTextChangedListener(this)
 
-            val nominal  = p0.toString().convertRupiaCurrency(false)
+            val nominal  = p0.toString().convertRupiahCurrency(false)
             this@setCurrencyFormat.setText(nominal)
             this@setCurrencyFormat.setSelection(nominal.length)
             this@setCurrencyFormat.addTextChangedListener(this)

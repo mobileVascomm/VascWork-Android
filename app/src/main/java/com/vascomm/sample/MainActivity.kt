@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.vascomm.sample.module.ActivitySampleModule
 import com.vascomm.sample.validation.ValidationActivity
+import com.vascomm.sample.viewstatelayout.ViewStateLayoutActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -24,6 +25,11 @@ class MainActivity : AppCompatActivity() {
 
         btn_sample_module.setOnClickListener {
             val intent  = Intent(this,ActivitySampleModule::class.java)
+            startActivity(intent)
+        }
+
+        btn_sample_viewstatelayout.setOnClickListener {
+            val intent  = Intent(this,ViewStateLayoutActivity::class.java)
             startActivity(intent)
         }
     }

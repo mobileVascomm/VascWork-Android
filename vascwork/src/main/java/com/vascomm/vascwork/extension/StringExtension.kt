@@ -6,7 +6,7 @@ import android.util.Base64
    convert nominal ke currency format
    contoh : 100000 -> Rp100.000
  */
-fun String.convertRupiaCurrency(userCurrency:Boolean = false): String{
+fun String.convertRupiahCurrency(userCurrency:Boolean = false): String{
     if(this == "0") return  if (userCurrency) "Rp0" else "0"
     val value  = if (this.contains(" ")) this.split(" ")[1] else this
     val result = StringBuilder(value.replace("." , ""))

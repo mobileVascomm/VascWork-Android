@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Font Size -->
+    <dimen name="font_xsmall">12sp</dimen>
+    <dimen name="font_small">14sp</dimen>
+    <dimen name="font_medium">16sp</dimen>
+    <dimen name="font_large">22sp</dimen>
+    <dimen name="font_xlarge">34sp</dimen>
+    <dimen name="font_xxlarge">45sp</dimen>
+    <dimen name="font_xxxlarge">56sp</dimen>
+
+    <!-- Margin or Padding -->
+    <dimen name="small">8dp</dimen>
+    <dimen name="medium">16dp</dimen>
+    <dimen name="large">24dp</dimen>
+    <dimen name="xlarge">32dp</dimen>
+    <dimen name="xxlarge">40dp</dimen>
+    <dimen name="xxxlarge">60dp</dimen>
+    <dimen name="standard_height">48dp</dimen>
+
+    <dimen name="itemPaddingStart">20dp</dimen>
+
+    <dimen name="text_title">22sp</dimen>
+    <dimen name="text_subtitle">18sp</dimen>
+</resources>
