@@ -12,10 +12,11 @@ interface  ViewStateInterface{
 
 class NetworkState constructor(val tag:String,
                                val viewState: ViewStateInterface,
-                               val scope: CoroutineScope){
+                               val scope: CoroutineScope,
+                               val isActive:Boolean){
 
     fun success(code:String = "",message:String = "", data:Any = ""){
-        scope.launch(Dispatchers.Main) { viewState.onSuccess(
+        scope.launch(Dispatchers.Main) { if(isActive) viewState.onSuccess(
             Result(
                 tag,
                 code,
@@ -26,7 +27,7 @@ class NetworkState constructor(val tag:String,
     }
 
     fun failure(code: String = "", message: String = "", data: Any= ""){
-        scope.launch(Dispatchers.Main) { viewState.onFailure(
+        scope.launch(Dispatchers.Main) { if (isActive) viewState.onFailure(
             Result(
                 tag,
                 code,
@@ -37,7 +38,7 @@ class NetworkState constructor(val tag:String,
     }
 
     fun loading(code:String = "",message: String = "",isLoading:Boolean = false,data: Any = ""){
-        scope.launch(Dispatchers.Main) {
+        scope.launch(Dispatchers.Main) { if (isActive)
             viewState.onLoading(
                 Result(
                     tag,

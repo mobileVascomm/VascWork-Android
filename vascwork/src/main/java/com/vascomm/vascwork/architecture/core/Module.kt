@@ -12,18 +12,20 @@ import kotlinx.coroutines.cancel
 
 open class Module constructor(val viewState: ViewStateInterface, val context: Context){
     protected  val scope = CoroutineScope(Job()+Dispatchers.Main)
+    protected var isActive = true
 
     private inner class ModuleLifecyclerObserver: LifecycleObserver{
         fun addObserver(lifecycle: Lifecycle) = lifecycle.addObserver(this)
 
         @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
         fun onStart() =
-            log(msg = "Lifecycle Observer Start Working")
+            log(msg = "Lifecycle Observer Start Working").also { isActive = true }
 
         @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-        fun onStop() = scope.cancel("Module stop working").also {
-            log(msg = "Lifecyler Observer Stop Working")
-        }
+        fun onStop() = log(msg = "Lifecycle Observer Stop Working").also { isActive = false }
+
+        @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+        fun onResume() = log(msg = "Lifecycle Observer Resume Working").also { isActive = true }
     }
 
     fun addLifecyclerObserver(lifecycle:Lifecycle) {
@@ -35,7 +37,8 @@ open class Module constructor(val viewState: ViewStateInterface, val context: Co
             NetworkState(
                 tag,
                 viewState,
-                scope
+                scope,
+                isActive
             )
         )
     }
