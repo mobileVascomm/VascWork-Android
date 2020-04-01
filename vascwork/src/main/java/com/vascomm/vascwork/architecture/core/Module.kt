@@ -24,6 +24,9 @@ open class Module constructor(val viewState: ViewStateInterface, val context: Co
         @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
         fun onStop() = log(msg = "Lifecycle Observer Stop Working").also { isActive = false }
 
+        @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+        fun onPause() = log(msg = "Lifecycle Observer Stop Working").also { isActive = false }
+
         @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
         fun onResume() = log(msg = "Lifecycle Observer Resume Working").also { isActive = true }
     }
