@@ -17,7 +17,7 @@ allprojects {
 ```
 ```
 dependencies {
-	  implementation 'com.github.mobileVascomm:VascWork-Android:v1.0'
+	  implementation 'com.github.mobileVascomm:VascWork-Android:v1.1.3'
 }
 ```
 
