@@ -1,8 +1,10 @@
 package com.vascomm.vascwork.additional.validation
 
+import android.util.Patterns
 import android.widget.EditText
 import com.google.android.material.textfield.TextInputLayout
 import com.vascomm.vacswork.R
+import java.util.regex.Pattern
 
 class Validation  constructor(var iValidation: ValidationInterface){
     private var registerFormData = ArrayList<Any>()
@@ -10,6 +12,14 @@ class Validation  constructor(var iValidation: ValidationInterface){
     private var error = ArrayList<TextInputLayout>()
 
     private var errorCount = 0
+
+    companion object{
+        fun requiredRule(text: String) = text.isNotEmpty()
+        fun confirmationRule(text: String, text2: String) = text == text2
+        fun emailRule(text: String) = Patterns.EMAIL_ADDRESS.matcher(text).matches()
+        fun lengthRule(text: String, minLength: Int, maxLength: Int) = text.length in minLength..maxLength
+        fun regexRule(text: String, regex: String) = Pattern.compile(regex).matcher(text).find()
+    }
 
     fun registerField(editText: EditText,key:String,listRules:MutableCollection<ValidationRules>){
         registerFormData.add(

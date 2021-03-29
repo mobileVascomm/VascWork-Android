@@ -31,7 +31,7 @@ class EmailRule constructor(val message: String):
 }
 
 /** Length Rule register  */
-class LenghtRule constructor(val message: String,val minLenght:Int,val maxLenght:Int):
+class LengthRule constructor(val message: String, val minLenght:Int, val maxLenght:Int):
     ValidationRules {
     override fun validation(text: String): Boolean = text.length in minLenght..maxLenght
     override fun getErrorMessage(): String = message
